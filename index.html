@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Emission Quantification</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Carbon Emission Quantification</h1>
+    </header>
+
+    <main>
+        <section id="input-section">
+            <h2>Input Mining and Transportation Activity Data</h2>
+            <form id="emission-form">
+                <label for="activity">Activity Type:</label>
+                <select id="activity" name="activity">
+                    <option value="" disabled selected>Select an activity</option>
+                    <option value="mining">Mining</option>
+                    <option value="transportation">Transportation</option>
+                </select>
+
+                <div id="quantity-container" class="form-group">
+                    <label for="quantity">Quantity (in tons):</label>
+                    <input type="number" id="quantity" name="quantity">
+                </div>
+
+                <label for="fuelType">Fuel Type:</label>
+                <select id="fuelType" name="fuelType">
+                    <option value="" disabled selected>Select a fuel type</option>
+                    <option value="diesel">Diesel</option>
+                    <option value="electricity">Electricity</option>
+                    <option value="gasoline">Gasoline</option>
+                </select>
+
+                <div id="distance-container" class="form-group">
+                    <label for="distance">Distance Traveled (in km):</label>
+                    <input type="number" id="distance" name="distance">
+                </div>
+
+                <button type="submit">Calculate Emission</button>
+            </form>
+        </section>
+
+        <section id="results-section">
+            <div class="results-container">
+                <div id="mining-results" class="results-box">
+                    <h2>Mining Activity Results</h2>
+                    <!-- Mining activity results will be displayed here -->
+                </div>
+                <div id="transportation-results" class="results-box">
+                    <h2>Transportation Activity Results</h2>
+                    <!-- Transportation activity results will be displayed here -->
+                </div>
+            </div>
+        </section>
+
+        <section id="credits-section">
+            <h2>Carbon Credits Estimation</h2>
+            <button id="estimate-credits">Estimate Carbon Credits</button>
+            <div id="credits-results">
+                <!-- Carbon credits results will be displayed here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Carbon Emission Quantification</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
