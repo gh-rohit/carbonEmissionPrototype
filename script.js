@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const transportationResultsDiv = document.getElementById('transportation-results');
     const fuelTypeSelect = document.getElementById('fuelType');
    
-
     activitySelect.addEventListener('change', (event) => {
         const activity = event.target.value;
 
@@ -44,6 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const distance = parseFloat(document.getElementById('distance').value) || 0;
 
         let emission = 0;
+        let oxygenRequired = 0;
+        let treesRequired = 0;
 
         // Clear previous results
         miningResultsDiv.innerHTML = '';
@@ -58,10 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const totalFuelConsumption = quantity * fuelConsumptionPerTon;
                 emission = totalFuelConsumption * emissionFactorDiesel;
 
-                miningResultsDiv.innerHTML = `
-                    <h2>Mining Activity Results</h2>
-                    <p>Emission: ${emission.toFixed(2)} kg CO₂</p>
-                `;
             } else if (fuelType === 'gasoline') {
                 // Gasoline values for mining
                 const fuelConsumptionPerTon = 55; // liters per ton
@@ -70,10 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const totalFuelConsumption = quantity * fuelConsumptionPerTon;
                 emission = totalFuelConsumption * emissionFactorGasoline;
 
-                miningResultsDiv.innerHTML = `
-                    <h2>Mining Activity Results</h2>
-                    <p>Emission: ${emission.toFixed(2)} kg CO₂</p>
-                `;
             } else if (fuelType === 'LPG') {
                 // LPG values for mining (assuming it's valid)
                 const emissionFactorLPG = 0.234; // kg CO2 per kWh (example value)
@@ -81,10 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Assuming quantity represents kWh in this case
                 emission = quantity * emissionFactorLPG;
 
-                miningResultsDiv.innerHTML = `
-                    <h2>Mining Activity Results</h2>
-                    <p>Emission: ${emission.toFixed(2)} kg CO₂</p>
-                `;
             } else if (fuelType === 'CNG') {
                 // CNG values for mining (assuming it's valid)
                 const emissionFactorCNG = 0.214; // kg CO2 per kWh (example value)
@@ -92,17 +81,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Assuming quantity represents kWh in this case
                 emission = quantity * emissionFactorCNG;
 
-                miningResultsDiv.innerHTML = `
-                    <h2>Mining Activity Results</h2>
-                    <p>Emission: ${emission.toFixed(2)} kg CO₂</p>
-                `;
             } else {
                 // Handle invalid fuel types for mining
                 miningResultsDiv.innerHTML = `
                     <h2>Mining Activity Results</h2>
                     <p>Invalid fuel type selected for mining.</p>
                 `;
+                return;
             }
+
+            // Display results for mining
+            miningResultsDiv.innerHTML = `
+                <h2>Mining Activity Results</h2>
+                <p>Emission: ${emission.toFixed(2)} kg CO₂</p>
+            `;
+
         } else if (activity === 'transportation') {
             if (fuelType === 'diesel') {
                 // Diesel values for transportation
@@ -112,10 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const totalFuelConsumption = distance * fuelConsumptionPerKm;
                 emission = totalFuelConsumption * emissionFactorDiesel;
 
-                transportationResultsDiv.innerHTML = `
-                    <h2>Transportation Activity Results</h2>
-                    <p>Emission: ${emission.toFixed(2)} kg CO₂</p>
-                `;
             } else if (fuelType === 'gasoline') {
                 // Gasoline values for transportation
                 const fuelConsumptionPerKm = 0.4; // liters per km
@@ -124,10 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const totalFuelConsumption = distance * fuelConsumptionPerKm;
                 emission = totalFuelConsumption * emissionFactorGasoline;
 
-                transportationResultsDiv.innerHTML = `
-                    <h2>Transportation Activity Results</h2>
-                    <p>Emission: ${emission.toFixed(2)} kg CO₂</p>
-                `;
             } else if (fuelType === 'LPG') {
                 // LPG values for transportation
                 const energyConsumptionPerKm = 0.1; // kWh per km
@@ -136,10 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const totalEnergyConsumption = distance * energyConsumptionPerKm;
                 emission = totalEnergyConsumption * emissionFactorLPG;
 
-                transportationResultsDiv.innerHTML = `
-                    <h2>Transportation Activity Results</h2>
-                    <p>Emission: ${emission.toFixed(2)} kg CO₂</p>
-                `;
             } else if (fuelType === 'CNG') {
                 // CNG values for transportation
                 const energyConsumptionPerKm = 0.12; // kWh per km (example value)
@@ -148,18 +129,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 const totalEnergyConsumption = distance * energyConsumptionPerKm;
                 emission = totalEnergyConsumption * emissionFactorCNG;
 
-                transportationResultsDiv.innerHTML = `
-                    <h2>Transportation Activity Results</h2>
-                    <p>Emission: ${emission.toFixed(2)} kg CO₂</p>
-                `;
             } else {
                 // Handle invalid fuel types for transportation
                 transportationResultsDiv.innerHTML = `
                     <h2>Transportation Activity Results</h2>
                     <p>Invalid fuel type selected for transportation.</p>
                 `;
+                return;
             }
+
+            // Display results for transportation
+            transportationResultsDiv.innerHTML = `
+                <h2>Transportation Activity Results</h2>
+                <p>Emission: ${emission.toFixed(2)} kg CO₂</p>
+            `;
         }
+
+        // Calculate oxygen required and trees needed
+        oxygenRequired = emission * 2.29; // The factor 2.29 is an approximation; adjust as needed
+        treesRequired = emission / 0.022; // Assuming 1 tree can absorb 22kg of CO2 per year
+
+        // Display the oxygen required and trees needed
+        if(emission===0){
+            document.getElementById('trees-required').innerText=" To sustain life, there must be trees "
+        }
+        else{
+            document.getElementById('total-co2').innerText = emission.toFixed(2);
+            document.getElementById('oxygen-needed').innerText = oxygenRequired.toFixed(2);
+            document.getElementById('trees-required').innerText = treesRequired.toFixed(0);
+           
+
+        }
+      
     });
 });
 

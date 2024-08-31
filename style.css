@@ -197,3 +197,29 @@ footer {
     text-align: center;
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
+
+.co2-output {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .co2-output h2 {
+    color: #4CAF50;
+  }
+  .co2-output p {
+    font-size: 18px;
+  }
+  #Tree{
+    display: flex;
+    align-items: center;
+ 
+;
+  }
+  #Tree img{
+    margin-top: 1vh;
+    height: 7vh;
+    object-fit: cover;
+    margin-left: 10px;
+
+  }
