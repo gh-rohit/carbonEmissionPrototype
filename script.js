@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const miningResultsDiv = document.getElementById('mining-results');
     const transportationResultsDiv = document.getElementById('transportation-results');
     const fuelTypeSelect = document.getElementById('fuelType');
+   
 
     activitySelect.addEventListener('change', (event) => {
         const activity = event.target.value;
@@ -164,4 +165,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.querySelector('.menu-toggle').addEventListener('click', function() {
     document.querySelector('.nav-links').classList.toggle('active');
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function() {
+        document.querySelector('.nav-links').classList.remove('active');
+    });
 });
