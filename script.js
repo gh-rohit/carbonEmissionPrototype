@@ -174,15 +174,25 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
-document.querySelectorAll('.toggle-btn').forEach(button => {
-    button.addEventListener('click', () => {
-        const managementInfo = button.nextElementSibling;
-        if (managementInfo.style.display === 'block') {
-            managementInfo.style.display = 'none';
-            button.textContent = 'Show Management';
-        } else {
-            managementInfo.style.display = 'block';
-            button.textContent = 'Hide Management';
+
+document.addEventListener('DOMContentLoaded', () => {
+    const wasteDropdown = document.getElementById('waste-dropdown');
+
+    wasteDropdown.addEventListener('change', function() {
+        // Hide all management info sections
+        document.querySelectorAll('.management-info').forEach(item => {
+            item.classList.remove('active');
+        });
+
+        // Show the selected management info section
+        const selectedValue = this.value;
+        if (selectedValue) {
+            const selectedElement = document.getElementById(selectedValue);
+            if (selectedElement) {
+                selectedElement.classList.add('active');
+            }
         }
     });
 });
+
+

@@ -27,7 +27,9 @@
                 </ul>
             </div>
         </nav>
-        <video autoplay loop muted src="./MINING DRONE SHOWREEL(720P_HD).mp4"></video>
+         <div id="video-container">
+            <video autoplay loop muted src="./MINING DRONE SHOWREEL(720P_HD).mp4"></video>
+         </div>
         
         <section id="input-section">
             <h2>Input Mining and Transportation Activity Data</h2>
@@ -80,72 +82,67 @@
             <p>Oxygen Needed: <span id="oxygen-needed">0</span> Kg</p>
             <p id="Tree">Number of Trees should be:   <span id="trees-required">0</span> <img src="./images (1).png" alt=""></p>
           </div>
+          
           <div class="container-two">
             <h1>Coal Mining Waste Management</h1>
             
-            <div class="waste-item" id="overburden">
-                <h2>Overburden and Spoil</h2>
-                <p>Overburden refers to the soil and rock removed to access coal seams.</p>
-                <button class="toggle-btn">Show Management</button>
-                <div class="management-info">
+            <select id="waste-dropdown">
+                <option value="">Select Waste Type</option>
+                <option value="overburden">Overburden and Spoil</option>
+                <option value="tailings">Coal Rejects/Tailings</option>
+                <option value="amd">Acid Mine Drainage (AMD)</option>
+                <option value="slurry">Coal Slurry/Sludge</option>
+                <option value="dust">Dust and Particulate Matter</option>
+                <option value="methane">Methane Emissions</option>
+                <option value="toxins">Heavy Metals and Toxins</option>
+            </select>
+            
+            <div id="waste-info">
+                <div id="overburden" class="management-info">
+                    <h2>Overburden and Spoil</h2>
+                    <p>Overburden refers to the soil and rock removed to access coal seams.</p>
                     <p>Management Strategy: Land reclamation, backfilling, and vegetation.</p>
                 </div>
-            </div>
-    
-            <div class="waste-item" id="tailings">
-                <h2>Coal Rejects/Tailings</h2>
-                <p>Leftover material after coal processing containing impurities.</p>
-                <button class="toggle-btn">Show Management</button>
-                <div class="management-info">
+                
+                <div id="tailings" class="management-info">
+                    <h2>Coal Rejects/Tailings</h2>
+                    <p>Leftover material after coal processing containing impurities.</p>
                     <p>Management Strategy: Stored in tailings dams, dry stacking, and recycling.</p>
                 </div>
-            </div>
-    
-            <div class="waste-item" id="amd">
-                <h2>Acid Mine Drainage (AMD)</h2>
-                <p>Acidic water formed when sulfide minerals are exposed to air and water.</p>
-                <button class="toggle-btn">Show Management</button>
-                <div class="management-info">
+                
+                <div id="amd" class="management-info">
+                    <h2>Acid Mine Drainage (AMD)</h2>
+                    <p>Acidic water formed when sulfide minerals are exposed to air and water.</p>
                     <p>Management Strategy: Neutralization with lime, constructed wetlands.</p>
                 </div>
-            </div>
-    
-            <div class="waste-item" id="slurry">
-                <h2>Coal Slurry/Sludge</h2>
-                <p>A mixture of water and coal fines produced during processing.</p>
-                <button class="toggle-btn">Show Management</button>
-                <div class="management-info">
+                
+                <div id="slurry" class="management-info">
+                    <h2>Coal Slurry/Sludge</h2>
+                    <p>A mixture of water and coal fines produced during processing.</p>
                     <p>Management Strategy: Dewatering, safe containment, and reuse of water.</p>
                 </div>
-            </div>
-    
-            <div class="waste-item" id="dust">
-                <h2>Dust and Particulate Matter</h2>
-                <p>Dust generated during mining and transportation of coal.</p>
-                <button class="toggle-btn">Show Management</button>
-                <div class="management-info">
+                
+                <div id="dust" class="management-info">
+                    <h2>Dust and Particulate Matter</h2>
+                    <p>Dust generated during mining and transportation of coal.</p>
                     <p>Management Strategy: Water sprays, dust collectors, and vegetation.</p>
                 </div>
-            </div>
-    
-            <div class="waste-item" id="methane">
-                <h2>Methane Emissions</h2>
-                <p>Methane gas released during coal extraction, contributing to greenhouse gases.</p>
-                <button class="toggle-btn">Show Management</button>
-                <div class="management-info">
+                
+                <div id="methane" class="management-info">
+                    <h2>Methane Emissions</h2>
+                    <p>Methane gas released during coal extraction, contributing to greenhouse gases.</p>
                     <p>Management Strategy: Methane capture, flaring, and ventilation systems.</p>
                 </div>
-            </div>
-    
-            <div class="waste-item" id="toxins">
-                <h2>Heavy Metals and Toxins</h2>
-                <p>Release of toxic substances like mercury, arsenic, and cadmium.</p>
-                <button class="toggle-btn">Show Management</button>
-                <div class="management-info">
+                
+                <div id="toxins" class="management-info">
+                    <h2>Heavy Metals and Toxins</h2>
+                    <p>Release of toxic substances like mercury, arsenic, and cadmium.</p>
                     <p>Management Strategy: Water treatment and secure containment.</p>
                 </div>
             </div>
         </div>
+        <!-- Add more management-info sections as needed -->
+        
         
         <section id="credits-section">
             <h2>Carbon Credits Estimation</h2>
