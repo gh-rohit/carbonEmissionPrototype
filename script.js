@@ -173,3 +173,16 @@ document.querySelectorAll('.nav-links a').forEach(link => {
         document.querySelector('.nav-links').classList.remove('active');
     });
 });
+
+document.querySelectorAll('.toggle-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const managementInfo = button.nextElementSibling;
+        if (managementInfo.style.display === 'block') {
+            managementInfo.style.display = 'none';
+            button.textContent = 'Show Management';
+        } else {
+            managementInfo.style.display = 'block';
+            button.textContent = 'Hide Management';
+        }
+    });
+});
